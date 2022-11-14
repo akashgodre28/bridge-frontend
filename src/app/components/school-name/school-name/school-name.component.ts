@@ -43,7 +43,6 @@ export class SchoolNameComponent implements OnInit {
 
     if (this.schoolid) {
       this.router.navigate(['/sign-up'], { queryParams: { schoolid: this.schoolid } });
-
       // this.toastr.success('School Name Added Successfully!', 'Success')
     }
     else {
@@ -59,8 +58,9 @@ export class SchoolNameComponent implements OnInit {
 
   searchSchool(event: any) {
     this.searchName = event.target.value;
-    this._apiservice
-      .schoolList(this.searchName).subscribe((data: any) => {
+    console.log("event hai mera",event.target.value);
+    
+    this._apiservice.schoolList(this.searchName).subscribe((data: any) => {
         this.schoollist = data.data;
         console.log(this.schoollist);
       })
